@@ -118,7 +118,14 @@ option(OPENVDB_FUTURE_DEPRECATION "Generate messages for upcoming deprecation" O
 option(USE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." OFF)
 option(USE_PKGCONFIG "Use pkg-config to search for dependent libraries." ON)
 
-set(SYSTEM_LIBRARY_PATHS "" CACHE STRING [=[
+find_package(Boost REQUIRED HINTS "E:/thirdPartyLibs/BOOST_1_73_0")
+set(Boost_USE_STATIC_LIBS ON)
+
+set( ZLIB_ROOT "E:/thirdPartyLibs/ZLIB" CACHE PATH "Zlib library path" )
+set( BLOSC_ROOT "E:/thirdPartyLibs/BLOSC" CACHE PATH "Blosc library path" )
+set( CPPUNIT_ROOT "E:/thirdPartyLibs/CPPUNIT" CACHE PATH "Blosc library path" )
+
+set(SYSTEM_LIBRARY_PATHS "E:/thirdPartyLibs/OPENEXR" "E:/thirdPartyLibs/TBB" "E:/thirdPartyLibs/BOOST_1_73_0" CACHE STRING [=[
 A global list of library paths to additionally use into when searching for dependencies.]=])
 
 set(_CONCURRENT_MALLOC_OPTIONS None Auto Jemalloc Tbbmalloc)

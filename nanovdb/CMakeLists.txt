@@ -10,6 +10,19 @@ project(NanoVDB LANGUAGES C CXX)
 # -----------------------------------------------------------------------
 # Setup.
 
+find_package(Boost REQUIRED HINTS "E:/thirdPartyLibs/BOOST_1_73_0")
+set(Boost_USE_STATIC_LIBS ON)
+
+set( ZLIB_ROOT "E:/thirdPartyLibs/ZLIB" CACHE PATH "Zlib library path" )
+set( BLOSC_ROOT "E:/thirdPartyLibs/BLOSC" CACHE PATH "Blosc library path" )
+set( TBB_ROOT "E:/thirdPartyLibs/TBB" CACHE PATH "TBB library path" )
+set( OPENEXR_ROOT "E:/thirdPartyLibs/OPENEXR" CACHE PATH "OpenEXR library path" )
+set( OPENVDB_ROOT "E:/thirdPartyLibs/OPENBVDB71" CACHE PATH "OpenVDB library path" )
+set( CUDA_TOOLKIT_ROOT_DIR "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1" CACHE PATH "CUDA TOOLKIT library path" )
+
+set(SYSTEM_LIBRARY_PATHS "E:/thirdPartyLibs/OPENEXR" "E:/thirdPartyLibs/TBB" "E:/thirdPartyLibs/BOOST_1_73_0" CACHE STRING [=[
+A global list of library paths to additionally use into when searching for dependencies.]=])
+
 include(FetchContent)
 
 set(CMAKE_CXX_STANDARD 11)
