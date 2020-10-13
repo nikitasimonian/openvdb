@@ -124,7 +124,7 @@ TestPointDelete::testDeleteFromGroups()
         PointDataTree& tree = grid->tree();
 
         appendGroup(tree, "test");
-        appendAttribute(tree, "testAttribute", TypedAttributeArray<int32_t>::attributeType());
+        appendAttribute<PointDataTree>(tree, "testAttribute", TypedAttributeArray<int32_t>::attributeType());
 
         CPPUNIT_ASSERT(tree.beginLeaf());
 

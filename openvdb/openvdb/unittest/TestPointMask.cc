@@ -69,7 +69,7 @@ TestPointMask::testMask()
     }
 
     { // identical transform
-        auto mask = convertPointsToMask(*points, *transform);
+        auto mask = convertPointsToMask<PointDataGrid, MaskGrid, NullFilter>(*points, *transform);
 
         CPPUNIT_ASSERT_EQUAL(points->tree().activeVoxelCount(), Index64(4));
         CPPUNIT_ASSERT_EQUAL(mask->tree().activeVoxelCount(), Index64(4));
@@ -106,19 +106,19 @@ TestPointMask::testMask()
         openvdb::math::Transform::Ptr newTransform(
             openvdb::math::Transform::createLinearTransform(newVoxelSize));
 
-        auto mask = convertPointsToMask(*points, *newTransform);
+        auto mask = convertPointsToMask<PointDataGrid, MaskGrid, NullFilter>(*points, *newTransform);
 
         CPPUNIT_ASSERT_EQUAL(mask->tree().activeVoxelCount(), Index64(2));
 
         MultiGroupFilter filter(includeGroups, excludeGroups,
             points->tree().cbeginLeaf()->attributeSet());
-        mask = convertPointsToMask(*points, *newTransform, filter);
+        mask = convertPointsToMask<PointDataGrid, MaskGrid, MultiGroupFilter>(*points, *newTransform, filter);
 
         CPPUNIT_ASSERT_EQUAL(mask->tree().activeVoxelCount(), Index64(1));
 
         MultiGroupFilter filter2(excludeGroups, includeGroups,
             points->tree().cbeginLeaf()->attributeSet());
-        mask = convertPointsToMask(*points, *newTransform, filter2);
+        mask = convertPointsToMask<PointDataGrid, MaskGrid, MultiGroupFilter>(*points, *newTransform, filter2);
 
         CPPUNIT_ASSERT_EQUAL(mask->tree().activeVoxelCount(), Index64(2));
     }

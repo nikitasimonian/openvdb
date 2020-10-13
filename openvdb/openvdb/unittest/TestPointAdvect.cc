@@ -71,7 +71,7 @@ TestPointAdvect::testAdvect()
     id.push_back(3);
 
     auto idAttributeType = TypedAttributeArray<int>::attributeType();
-    appendAttribute(points->tree(), "id", idAttributeType);
+    appendAttribute<PointDataTree>(points->tree(), "id", idAttributeType);
 
     // create a wrapper around the id vector
     PointAttributeVector<int> idWrapper(id);
@@ -371,7 +371,7 @@ TestPointAdvect::testZalesaksDisk()
     // append an integer "id" attribute
 
     auto idAttributeType = TypedAttributeArray<int>::attributeType();
-    appendAttribute(points->tree(), "id", idAttributeType);
+    appendAttribute<PointDataTree>(points->tree(), "id", idAttributeType);
 
     // populate it in serial based on iteration order
 

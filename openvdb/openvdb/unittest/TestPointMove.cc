@@ -951,7 +951,7 @@ TestPointMove::testPointData()
                                                               pointList, *transform);
         auto idAttributeType =
             openvdb::points::TypedAttributeArray<int>::attributeType();
-        openvdb::points::appendAttribute(points->tree(), "id", idAttributeType);
+        openvdb::points::appendAttribute<PointDataTree>(points->tree(), "id", idAttributeType);
 
         // create a wrapper around the id vector
         openvdb::points::PointAttributeVector<int> idWrapper(id);
@@ -968,7 +968,7 @@ TestPointMove::testPointData()
         openvdb::points::TypedAttributeArray<float, Codec>::registerType();
         auto radiusAttributeType =
             openvdb::points::TypedAttributeArray<float, Codec>::attributeType();
-        openvdb::points::appendAttribute(points->tree(), "pscale", radiusAttributeType);
+        openvdb::points::appendAttribute<PointDataTree>(points->tree(), "pscale", radiusAttributeType);
 
         // create a wrapper around the radius vector
         openvdb::points::PointAttributeVector<float> radiusWrapper(radius);
