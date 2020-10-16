@@ -1,2 +1,4 @@
 /build/*
 /nanovdb/build/*
+/nanovdb/glad.dir/RelWithDebInfo
+/nanovdb/x64/RelWithDebInfo/ZERO_CHECK
